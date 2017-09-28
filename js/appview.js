@@ -3,11 +3,10 @@ window.todo.appview= (function(){
 'use strict';
 var tditems = {};	      													  				
 	window.tditems = tditems;
-var store=new todo.store();
+var store= new todo.store();
 var Items = new todo.itemsview();	
-	function appview() {
-                   
-				return this;
+	function appview(name) {
+                  this.name= name || "success";
     }
 	
 	appview.prototype.init = function() {
@@ -22,9 +21,11 @@ var Items = new todo.itemsview();
 	};  
 	
 	appview.prototype.display=function($items){
+	//console.log($items );
 	for(var i=0;i<$items.length;i++){
 				Items.display($items[i]);												
 			}
+			return $items;
 	};
 	appview.prototype.add=function(){
 		var itemText = document.querySelector("#items");

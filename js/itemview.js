@@ -2,9 +2,9 @@ window.todo = window.todo || {};
 window.todo.itemview=
 (function(window){
              "use strict"; 
-                function itemview() {
+                function itemview(name) {
                                
-								return this;
+								this.name=name || "success";
                 }
 			   
  

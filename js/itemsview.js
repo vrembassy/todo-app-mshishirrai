@@ -1,9 +1,9 @@
 window.todo = window.todo || {};        
 window.todo.itemsview=
 (function(window){
-                function itemsview() {
+                function itemsview(name) {
                                
-								return this;
+								this.name= name || "success";
                 }
  
                 itemsview.prototype.init = function() {
@@ -13,8 +13,9 @@ window.todo.itemsview=
 						Item.init();   
                 };
  
-                itemsview.prototype.display = function (items) { 
-					$item1.value = null;
+                itemsview.prototype.display = function (items) {
+					var item1= document.querySelector("#items");				
+					item1.value = null;
 					$div = document.createElement('DIV');
 					$div.id = items+"div";
 					var divid = $div.id;
@@ -25,6 +26,7 @@ window.todo.itemsview=
 					var insertedItems = {id : divid, name : items, state : stat};
 					var store=new todo.store();
 					store.save(insertedItems);	
+					return items;
 				};
                
 				
@@ -50,7 +52,7 @@ window.todo.itemsview=
 					
 					var Item=new todo.itemview();
 					Item.remove(outerDivId);
-					
+					return outerDivId;
 				};
  
               return itemsview;     
